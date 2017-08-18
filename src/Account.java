@@ -31,14 +31,14 @@ abstract public class Account {
     }
 
 
-    public void transferFunds(Account tranferredFrom, Account transferredTo, double amount){
+    public void transferFunds(Account transferredFrom, Account transferredTo, double amount) {
         //withdrawal from and deposit to.
-        double transitAmount = tranferredFrom.withdraw(amount);
+        double transitAmount = transferredFrom.withdraw(amount);
         transferredTo.deposit(transitAmount);
         List<Transaction> transferTransaction = getTransactionList();
         transferTransaction.add(new Transaction("Transfer", transferredTo.getAccountName(),
-                tranferredFrom.getAccountName(), amount, transferredTo.getAccountBalance(),
-                tranferredFrom.getAccountBalance(), new Date()));
+                transferredFrom.getAccountName(), amount, transferredTo.getAccountBalance(),
+                transferredFrom.getAccountBalance(), new Date()));
     }
 
     public double deposit(double amount){

@@ -1,38 +1,80 @@
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Scanner;
 
 /**
  * Created by raphael on 8/15/17.
+ *
+ * Public class User Interface -
+ * runs the user interface
+ *
  */
 public class UserInterface {
 
-    public static void main(String[] args){
-        UserInterface ui = new UserInterface();
-        Account checking = new Checking(500, "Checking");
-        Account savings = new Savings(500, "Savings", 5);
-        Account business = new Business(500, "Business Account",
-                new Checking(0, "Business Checking"),
-                new Savings(0, "Business Savings"),
-                5, 5);
+    private static final int INTEREST_RATE = 5;
 
-        int result = ui.uiMainScreen();
-        int resResult = 0;
-        switch (result){
-            case 1:
-                resResult = ui.transactionMenu(checking);
+    public static void main(String[] args){
+
+        /*todo: create text doc to save transactions and to save account names and lists. */
+        //args will contain the text file specified or the account name that is to be accessed
+
+        String fileName = args[0];
+
+        System.out.println(args[0]);
+        FileReader fr;
+        BufferedReader br;
+
+        readFile(args[0]);
+
+
+    }
+
+    private static void readFile(String arg) {
+        try (BufferedReader br = new BufferedReader(new FileReader(arg))) {
+
+            String currentLine;
+
+            while ((currentLine = br.readLine()) != null) {
+                readFunction(currentLine);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void readFunction(String line) {
+        String[] token = line.split("\\s+");
+        switch (token[0]) {
+            case "create":
+                createFunction(token);
                 break;
-            case 2:
-                resResult = ui.transactionMenu(savings);
+            case "deposit":
                 break;
-            case 3:
-                resResult = ui.transactionMenu(business);
+            case "withdraw":
+                break;
+            case "transfer":
                 break;
             default:
-                System.out.println("Invalid Selection, Logging off....");
+                break;
+        }
+    }
+
+    private static Account createFunction(String[] token) {
+        String accountName = token[1];
+        double amount = Double.parseDouble(token[3]);
+
+        Account createAccount;
+
+        if (token[2].equals("checking")) {
+            createAccount = new Checking(amount, accountName);
+        } else if (token[2].equals("savings")) {
+            createAccount = new Savings(amount, accountName, INTEREST_RATE);
+        } else {
+            System.err.println("Incorrect format, please review argument structure");
+            createAccount = null;
         }
 
-        System.out.println(resResult);
-
+        return createAccount;
     }
 
     private int uiMainScreen(){

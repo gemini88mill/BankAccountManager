@@ -1,0 +1,14 @@
+Bank Account Manager
+
+BAM takes in a text file for a list of functions for the bank account manager to preform. the line are representative
+of their first arguments.
+
+function    name        type        value
+create      checking    checking    500
+
+standard create line argument.
+
+other arguments would be
+deposit     accountName     amount
+withdraw    accountName     amount
+transfer    accountNameSending      accountNameReceiving    amount
