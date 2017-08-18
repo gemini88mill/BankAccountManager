@@ -663,7 +663,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1502848532252</updated>
-      <workItem from="1502848536737" duration="33211000" />
+      <workItem from="1502848536737" duration="33220000" />
     </task>
     <task id="LOCAL-00001" summary="updating Userinterface for file reading">
       <created>1503045477716</created>
@@ -679,11 +679,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503045962246</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="finished create account feature">
+      <created>1503045969526</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1503045969526</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33211000" />
+    <option name="totallyTimeSpent" value="33220000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
