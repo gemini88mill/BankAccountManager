@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="209ce27e-160a-4570-8a72-b161e7f9f683" name="Default" comment="updated comments on UserInterface">
+    <list default="true" id="209ce27e-160a-4570-8a72-b161e7f9f683" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BankAccountManager/Account.class" afterPath="$PROJECT_DIR$/out/production/BankAccountManager/Account.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BankAccountManager/UserInterface.class" afterPath="$PROJECT_DIR$/out/production/BankAccountManager/UserInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserInterface.java" afterPath="$PROJECT_DIR$/src/UserInterface.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
-              <caret line="197" column="8" lean-forward="false" selection-start-line="197" selection-start-column="8" selection-end-line="197" selection-end-column="8" />
+              <caret line="198" column="8" lean-forward="false" selection-start-line="198" selection-start-column="8" selection-end-line="198" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -666,7 +665,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1502848532252</updated>
-      <workItem from="1502848536737" duration="40039000" />
+      <workItem from="1502848536737" duration="40048000" />
     </task>
     <task id="LOCAL-00001" summary="updating Userinterface for file reading">
       <created>1503045477716</created>
@@ -703,11 +702,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503055218239</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated comments on UserInterface">
+      <created>1503056193196</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1503056193196</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40039000" />
+    <option name="totallyTimeSpent" value="40048000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-11" width="1922" height="1092" extended-state="6" />
@@ -893,7 +899,7 @@
     <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="197" column="8" lean-forward="false" selection-start-line="197" selection-start-column="8" selection-end-line="197" selection-end-column="8" />
+          <caret line="198" column="8" lean-forward="false" selection-start-line="198" selection-start-column="8" selection-end-line="198" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
