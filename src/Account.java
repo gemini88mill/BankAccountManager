@@ -55,6 +55,13 @@ abstract public class Account {
         return getAccountBalance();
     }
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountBalance=" + accountBalance +
+                ", accountName='" + accountName + '\'' +
+                '}';
+    }
 
     //----Getters and Setters-----------------------------
     public double getAccountBalance() {

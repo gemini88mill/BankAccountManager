@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Scanner;
 public class UserInterface {
 
     private static final int INTEREST_RATE = 5;
+    public List<Account> bankAccounts = new ArrayList<>();
 
     public static void main(String[] args){
 
@@ -44,9 +47,13 @@ public class UserInterface {
 
     private static void readFunction(String line) {
         String[] token = line.split("\\s+");
+        List<Account> bankAccounts = new ArrayList<>();
+
+
         switch (token[0]) {
             case "create":
-                createFunction(token);
+                bankAccounts.add(createFunction(token));
+                System.out.println("Account created: " + bankAccounts.get(bankAccounts.size() - 1).toString());
                 break;
             case "deposit":
                 break;
