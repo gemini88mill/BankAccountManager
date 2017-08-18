@@ -31,7 +31,7 @@ abstract public class Account {
     }
 
 
-    public void transferFunds(Account transferredFrom, Account transferredTo, double amount) {
+    public Transaction transferFunds(Account transferredFrom, Account transferredTo, double amount) {
         //withdrawal from and deposit to.
         double transitAmount = transferredFrom.withdraw(amount);
         transferredTo.deposit(transitAmount);
@@ -39,9 +39,11 @@ abstract public class Account {
         transferTransaction.add(new Transaction("Transfer", transferredTo.getAccountName(),
                 transferredFrom.getAccountName(), amount, transferredTo.getAccountBalance(),
                 transferredFrom.getAccountBalance(), new Date()));
+
+        return transferTransaction.get(transferTransaction.size() - 1);
     }
 
-    public double deposit(double amount){
+    public Transaction deposit(double amount) {
         double currentBalance = this.getAccountBalance();
         double prevBal = currentBalance;
         List<Transaction> deposits = getTransactionList();
@@ -52,7 +54,7 @@ abstract public class Account {
 
         deposits.add(new Transaction("Deposit", getAccountName(),  amount, prevBal, currentBalance, new Date()));
         setTransactionList(deposits);
-        return getAccountBalance();
+        return deposits.get(deposits.size() - 1);
     }
 
     @Override

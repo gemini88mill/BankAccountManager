@@ -4,3 +4,4 @@ create checking3 checking 800
 create savings1 savings 1000
 create savings2 savings 2000
 create savings3 savings 3000
+deposit checking1 500

@@ -25,19 +25,21 @@ public class UserInterface {
         System.out.println(args[0]);
         FileReader fr;
         BufferedReader br;
+        List<Account> bankAccounts = new ArrayList<>();
 
-        readFile(args[0]);
+
+        readFile(args[0], bankAccounts);
 
 
     }
 
-    private static void readFile(String arg) {
+    private static void readFile(String arg, List<Account> bankAccounts) {
         try (BufferedReader br = new BufferedReader(new FileReader(arg))) {
 
             String currentLine;
 
             while ((currentLine = br.readLine()) != null) {
-                readFunction(currentLine);
+                readFunction(currentLine, bankAccounts);
             }
 
         } catch (IOException e) {
@@ -45,10 +47,9 @@ public class UserInterface {
         }
     }
 
-    private static void readFunction(String line) {
+    private static void readFunction(String line, List<Account> bankAccounts) {
         String[] token = line.split("\\s+");
-        List<Account> bankAccounts = new ArrayList<>();
-
+        int result;
 
         switch (token[0]) {
             case "create":
@@ -56,14 +57,82 @@ public class UserInterface {
                 System.out.println("Account created: " + bankAccounts.get(bankAccounts.size() - 1).toString());
                 break;
             case "deposit":
+                result = initDeposit(token[1], Double.parseDouble(token[2]), bankAccounts);
+                if (result == 0)
+                    System.out.println("Account not found");
                 break;
             case "withdraw":
+                result = initWithdrawal(token[1], Double.parseDouble(token[3]), bankAccounts);
+                if (result == 0)
+                    System.out.println("Account not found");
                 break;
             case "transfer":
+                result = initTransfer(token[1], token[2], Double.parseDouble(token[3]), bankAccounts);
+                if (result == 0)
+                    System.out.println("transfer unsuccessful");
                 break;
             default:
                 break;
         }
+    }
+
+    private static int initTransfer(String accountTo, String accountFrom, double amount, List<Account> bankAccounts) {
+        Account accountReceive = null;
+        Account accountSend = null;
+
+        System.out.println("Looking for accounts: " + accountTo + ", " + accountFrom);
+        for (Account bankAccount : bankAccounts) {
+            if (bankAccount.getAccountName().equals(accountTo)) {
+                System.out.println("found account" + accountTo);
+                accountReceive = bankAccount;
+            }
+            if (bankAccount.getAccountName().equals(accountFrom)) {
+                System.out.println("found account" + accountFrom);
+                accountSend = bankAccount;
+            }
+        }
+
+        if (accountSend != null && accountReceive != null) {
+            Transaction transaction = accountSend.transferFunds(accountSend, accountReceive, amount);
+            System.out.println(transaction.toString());
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    private static int initWithdrawal(String accountName, double amount, List<Account> bankAccounts) {
+        System.out.println("Looking for account: " + accountName);
+        for (Account bankAccount : bankAccounts) {
+            if (bankAccount.getAccountName().equals(accountName)) {
+                System.out.println("Found account...");
+                double prevBalance = bankAccount.getAccountBalance();
+                bankAccount.withdraw(amount);
+                double currentBalance = bankAccount.getAccountBalance();
+                System.out.println("Deposit successful, Previous Balance:" + prevBalance);
+                System.out.println("New Balance: " + currentBalance);
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    private static int initDeposit(String accountName, double amount, List<Account> bankAccounts) {
+        System.out.println("Looking for account: " + accountName);
+        for (Account bankAccount : bankAccounts) {
+            System.out.println(bankAccount.getAccountName());
+            System.out.println("here");
+            if (bankAccount.getAccountName().equals(accountName)) {
+                System.out.println("Found account...");
+                double previousBalance = bankAccount.getAccountBalance();
+                bankAccount.deposit(amount);
+                double currentBalance = bankAccount.getAccountBalance();
+                System.out.println("Deposit successful, Previous Balance:" + previousBalance);
+                System.out.println("New Balance: " + currentBalance);
+                return 1;
+            }
+        }
+        return 0;
     }
 
     private static Account createFunction(String[] token) {
